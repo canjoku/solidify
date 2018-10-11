@@ -31,4 +31,10 @@ describe('Inbox', ()=>{
     const surname = await inbox.methods.surname().call();
     assert.equal(surname, 'njoku')
   })
+
+  it('surname can be changed', async()=>{
+    await inbox.methods.setSurname("Emmanuel").send({ from: accounts[0], gas: '1000000' });
+    surname = await inbox.methods.surname().call()
+    assert.equal(surname, 'Emmanuel')
+  })
 })
